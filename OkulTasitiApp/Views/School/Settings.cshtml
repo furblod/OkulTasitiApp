@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewData["Title"] = "Settings";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model List<School>
+
+<h2>Okul Ayarları</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Okul Adı</th>
+            <th>Okul Adresi</th>
+            <th>Aksiyonlar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var school in Model)
+        {
+            <tr>
+                <td>@school.Name</td>
+                <td>@school.Address</td>
+                <td>
+                    <a href="/School/Edit/@school.SchoolID" class="btn btn-warning">Güncelle</a>
+                    <a href="/School/Delete/@school.SchoolID" class="btn btn-danger" onclick="return confirm('Silmek istediğinize emin misiniz?');">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="/School/Create" class="btn btn-success">Yeni Okul Ekle</a>
+
+

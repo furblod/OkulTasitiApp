@@ -1,0 +1,36 @@
+﻿@model OkulTasitiApp.Models.LoginViewModel
+@{
+    ViewData["HideHeader"] = true;
+    Layout = "_Layout";
+}
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger" role="alert">
+        Geçersiz giriş denemesi. Lütfen tekrar deneyin.
+    </div>
+}
+
+<div class="container form-container">
+    <div class="form-box">
+        <form asp-action="Login" method="post">
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" type="email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" type="password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Giriş Yap</button>
+            <div>Hesabın Yok mu?</div>
+            <a class="btn btn-secondary btn-block" asp-action="Register">Yeni Hesap Aç</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

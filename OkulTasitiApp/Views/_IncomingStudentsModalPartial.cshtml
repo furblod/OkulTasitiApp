@@ -1,0 +1,9 @@
+﻿@model IEnumerable<OkulTasitiApp.Models.Student>
+
+@foreach (var student in Model)
+{
+    <div class="form-check" data-shift="@((student.ShiftType) ? "morning" : "afternoon")" data-school="@student.School">
+        <input class="form-check-input" type="checkbox" id="student_@student.StudentID" name="student_@student.StudentID" value="@student.StudentID" @(student.IsComingToday ? "checked" : "")>
+        <label class="form-check-label">@student.FirstName @student.LastName</label>
+    </div>
+}
